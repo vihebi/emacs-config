@@ -31,6 +31,7 @@
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
 
+;; turn off annoying windows bell sound on emacs warnings and errors
 (setq ring-bell-function 'ignore)
 
 ;; Custom global keybinding
