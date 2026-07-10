@@ -19,7 +19,8 @@
 ;; Theme
 (use-package doom-themes
   :config
-  (load-theme 'doom-plain-dark t))
+  (load-theme 'doom-ayu-dark t))
+;;  (load-theme 'doom-plain-dark t))
 
 (use-package doom-modeline
   :init (doom-modeline-mode 1))

@@ -10,7 +10,10 @@
 (setq use-package-always-ensure t)
 
 ;; open Emacs at fullscreen at startup
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+;; (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+
+;; remove the window title bar, unfortunately on Windows it removes the ability to resize and move the window :(
+;; (add-to-list 'default-frame-alist '(undecorated . t))
 
 ;; not the best name for it, since the packages are downloaded there as well - not just configured
 (add-to-list 'load-path "~/.emacs.d/configs")
@@ -57,13 +60,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(bookmark+ cargo cmake-mode company doom-modeline doom-themes
-               evil-collection evil-leader magit projectile rust-mode
-               treesit-auto)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-)
+ )
