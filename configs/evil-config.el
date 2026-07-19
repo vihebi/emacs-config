@@ -29,7 +29,7 @@
   (defun my/evil-save-kill-magit ()
     (interactive)
     (if (bound-and-true-p with-editor-mode)
-        (with-editor-cancel t)
+        (with-editor-finish t)
       (save-buffer)
       (kill-current-buffer)))
 
