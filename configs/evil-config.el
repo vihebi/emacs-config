@@ -1,4 +1,4 @@
-;; Evil config
+;; evil-config.el — mirrors init.lua keybindings + LspAttach block
 
 ;; ── Evil core ─────────────────────────────────────────────────────────────────
 (use-package evil
@@ -15,6 +15,10 @@
 
   (define-key evil-normal-state-map (kbd "C-b") 'dired-jump)
   (define-key evil-visual-state-map (kbd "C-b") 'dired-jump)
+
+  ;; (evil-ex-define-cmd "wq" 'save-and-kill-this-buffer)
+  ;; (defun save-and-kill-this-buffer()(interactive)(save-buffer)(kill-current-buffer))
+  (evil-ex-define-cmd "q" 'kill-current-buffer)
 
   ;; Y yanks to end of line (mirrors your Y lambda)
   (define-key evil-normal-state-map (kbd "Y")
@@ -72,26 +76,24 @@
   (evil-leader/set-key
 
     ;; ── Files ──────────────────────────────────────────────────────────────
-    "ff" 'find-file
+    "ff" 'helm-find-files
     "fs" 'save-buffer
 
     ;; ── Buffers ────────────────────────────────────────────────────────────
-    "bb" 'switch-to-buffer
+    "bb" 'helm-buffers-list   ; fuzzy buffer list, much better than list-buffers
     "bk" 'kill-buffer
+    "br" 'helm-recentf        ; recent files
 
     ;; ── Bookmarks ──────────────────────────────────────────────────────────
     "rl" 'bookmark-bmenu-list
-    "rb" (lambda ()
-           (interactive)
-           (bookmark-jump
-            (ido-completing-read "Jump to bookmark: " (bookmark-all-names))))
+    "rb" 'helm-bookmarks
 
     ;; ── Projects ───────────────────────────────────────────────────────────
-    "pp" 'projectile-switch-project
-    "pf" 'projectile-find-file
-    "pb" 'projectile-switch-to-buffer
+    "pp" 'helm-projectile-switch-project
+    "pf" 'helm-projectile-find-file
+    "pb" 'helm-projectile-switch-to-buffer
     "pk" 'projectile-kill-buffers
-    "pr" 'projectile-recentf
+    "pr" 'helm-projectile-recentf
 
     ;; ── LSP / Code ─────────────────────────────────────────────────────────
     ;; mirrors: <C-q> code_action (also accessible via leader)
@@ -102,7 +104,7 @@
 
     ;; mirrors: gd definition + <leader>vrr references
     "cd"  'xref-find-definitions
-    "cD"  'xref-find-references
+    "vrr"  'xref-find-references
 
     ;; mirrors: <leader>vws workspace_symbol
     "vws" 'eglot-find-declaration

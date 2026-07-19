@@ -40,4 +40,7 @@
 (display-time-mode 1)
 (setq doom-modeline-time-icon nil)
 
+(use-package ansi-color
+  :hook (compilation-filter . ansi-color-compilation-filter))
+
 (provide 'theme-config)

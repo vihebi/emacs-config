@@ -24,6 +24,7 @@
 (require 'project-config)
 (require 'theme-config)
 (require 'magit-config)
+(require 'helm-config)
 
 ;; Basic settings
 (setq display-line-numbers-type 'relative)
@@ -60,7 +61,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages nil))
+ '(helm-minibuffer-history-key "M-p")
+ '(package-selected-packages
+   '(apheleia cape cargo cmake-mode company corfu doom-modeline
+              doom-themes eldoc-box evil-collection evil-leader helm
+              helm-projectile lua-mode magit projectile rust-mode
+              treesit-auto vterm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
