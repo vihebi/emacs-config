@@ -1,6 +1,6 @@
-;; lsp-config.el — mirrors nvim eglot + nvim-cmp + conform + fidget setup
+;; lsp-config.el   mirrors nvim eglot + nvim-cmp + conform + fidget setup
 
-;; ── Corfu — inline completion (replaces company, mirrors nvim-cmp) ────────────
+;; Corfu - inline completion (replaces company, mirrors nvim-cmp)             
 (use-package corfu
   :custom
   (corfu-auto t)                  ; like company-idle-delay
@@ -19,14 +19,14 @@
   :init
   (global-corfu-mode))
 
-;; Cape — extra completion sources (mirrors cmp-buffer, cmp-path, cmp-cmdline)
+;; Cape   extra completion sources (mirrors cmp-buffer, cmp-path, cmp-cmdline)
 (use-package cape
   :init
   (add-to-list 'completion-at-point-functions #'cape-file)    ; cmp-path
   (add-to-list 'completion-at-point-functions #'cape-dabbrev) ; cmp-buffer
   (add-to-list 'completion-at-point-functions #'cape-keyword))
 
-;; ── Eglot — LSP client (same role as nvim-lspconfig) ─────────────────────────
+;;    Eglot   LSP client (same role as nvim-lspconfig)                          
 (use-package eglot
   :hook ((rust-mode    . eglot-ensure)
          (c-mode       . eglot-ensure)
@@ -37,7 +37,7 @@
   ;; Show all diagnostics in the eldoc echo area (like nvim's virtual text)
   (eglot-ignored-server-capabilities '())
   :config
-  ;; Server programs — mirrors mason ensure_installed + handlers
+  ;; Server programs   mirrors mason ensure_installed + handlers
   (add-to-list 'eglot-server-programs '(rust-mode    . ("rust-analyzer")))
   (add-to-list 'eglot-server-programs '((c-mode c++-mode) . ("clangd")))
   (add-to-list 'eglot-server-programs '(lua-mode     . ("lua-language-server")))
@@ -51,11 +51,11 @@
                        #'cape-dabbrev))))
   (add-hook 'eglot-managed-mode-hook #'my/eglot-capf)
 
-  ;; Rounded diagnostic floats — mirrors vim.diagnostic.config float options
+  ;; Rounded diagnostic floats   mirrors vim.diagnostic.config float options
   (setq eldoc-echo-area-use-multiline-p nil) ; keep echo area tidy
   )
 
-;; ── Eldoc Box — hover float with border (mirrors <leader>k vim.lsp.buf.hover) ─
+;;    Eldoc Box   hover float with border (mirrors <leader>k vim.lsp.buf.hover)  
 (use-package eldoc-box
   :config
   ;; Render eldoc/hover in a child frame with a border, like nvim's "single" border
@@ -63,10 +63,10 @@
   (setq eldoc-box-max-pixel-width  700)
   (setq eldoc-box-max-pixel-height 400))
 
-;; ── Apheleia — formatting (mirrors conform.nvim) ─────────────────────────────
+;;    Apheleia   formatting (mirrors conform.nvim)                              
 (use-package apheleia
   :config
-  (apheleia-global-mode +1)
+  ;; (apheleia-global-mode +1) ;; This is global format-on-save in layman's terms 
   ;; Rust: rustfmt (rust-mode sets rust-format-on-save; apheleia replaces that)
   (setq rust-format-on-save nil) ; let apheleia handle it
   (push '(rustfmt . ("rustfmt" "--edition" "2021")) apheleia-formatters)
@@ -75,7 +75,7 @@
   (setf (alist-get 'c-mode   apheleia-mode-alist) 'clang-format)
   (setf (alist-get 'c++-mode apheleia-mode-alist) 'clang-format))
 
-;; ── Flymake tweaks — diagnostic floats (mirrors vim.diagnostic.config) ────────
+;;    Flymake tweaks   diagnostic floats (mirrors vim.diagnostic.config)         
 (use-package flymake
   :custom
   ;; Show diagnostics in the echo area automatically, like nvim's float on hover
@@ -83,7 +83,7 @@
   (flymake-no-changes-timeout 0.5))
 
 
-;; ── Language packages ─────────────────────────────────────────────────────────
+;;    Language packages                                                          
 (use-package rust-mode
   :mode "\\.rs\\'")
 (use-package lua-mode

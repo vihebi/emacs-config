@@ -2,8 +2,8 @@
 
 ;; Font
 (set-face-attribute 'default nil
-  :family "Iosevka NF"
-  :height 120)  ; height in 1/10 pt (120 = 12pt)
+                    :family "Iosevka NF"
+                    :height 120)  ; height in 1/10 pt (120 = 12pt)
 
 ;; A vertical line. For some reason this translates to 120
 (setq-default display-fill-column-indicator-column 107)

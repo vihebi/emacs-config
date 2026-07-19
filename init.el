@@ -15,6 +15,10 @@
 ;; remove the window title bar, unfortunately on Windows it removes the ability to resize and move the window :(
 ;; (add-to-list 'default-frame-alist '(undecorated . t))
 
+;; (add-to-list 'exec-path "C:/Program Files/Git/usr/bin")
+(when (memq system-type '(windows-nt))
+  (add-to-list 'exec-path "C:/Program Files/Git/usr/bin"))
+
 ;; not the best name for it, since the packages are downloaded there as well - not just configured
 (add-to-list 'load-path "~/.emacs.d/configs")
 
@@ -64,9 +68,9 @@
  '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages
    '(apheleia cape cargo cmake-mode company corfu doom-modeline
-              doom-themes eldoc-box evil-collection evil-leader helm
-              helm-projectile lua-mode magit projectile rust-mode
-              treesit-auto vterm)))
+              doom-themes eldoc-box evil-collection evil-leader
+              exec-path-from-shell helm helm-projectile lua-mode magit
+              projectile rust-mode treesit-auto vterm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
