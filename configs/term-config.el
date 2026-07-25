@@ -5,6 +5,9 @@
   :after (ghostel evil)
   :hook (ghostel-mode . evil-ghostel-mode))
 
+(when (eq system-type 'windows-nt)
+  (setq ghostel-shell "powershell.exe"))
+
 (defun my/ghostel-buf ()
   "Return the most recent ghostel buffer, or nil if none exists."
   (seq-find (lambda (buf)
