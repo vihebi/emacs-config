@@ -1,9 +1,16 @@
 ;; Appearance Config
 
+(defvar my/font-size 160)
+(defvar my/font-family "Iosevka Nerd Font")
+
+(when (eq system-type 'windows-nt)
+  (setq my/font-size 120
+        my/font-family "Iosevka NF"))
+
 ;; Font
 (set-face-attribute 'default nil
-                    :family "Iosevka NF"
-                    :height 120)  ; height in 1/10 pt (120 = 12pt)
+                    :family my/font-family
+                    :height my/font-size)  ; height in 1/10 pt (120 = 12pt)
 
 ;; A vertical line. For some reason this translates to 120
 (setq-default display-fill-column-indicator-column 107)
@@ -19,8 +26,9 @@
 ;; Theme
 (use-package doom-themes
   :config
-  (load-theme 'doom-ayu-dark t))
-;;  (load-theme 'doom-plain-dark t))
+  (load-theme 'doom-ayu-dark t)
+
+  (doom-themes-org-config))
 
 (use-package doom-modeline
   :init (doom-modeline-mode 1))
