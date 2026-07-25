@@ -20,6 +20,8 @@
   (define-key evil-normal-state-map (kbd "C-f") 'apheleia-format-buffer)
   (define-key evil-visual-state-map (kbd "C-f") 'apheleia-format-buffer)
 
+  (evil-set-undo-system 'undo-redo)
+
   (defun my/evil-kill-magit ()
     (interactive)
     (if (bound-and-true-p with-editor-mode)
@@ -94,7 +96,6 @@
   (global-evil-leader-mode)
   (evil-leader/set-leader "<SPC>")
   (evil-leader/set-key
-
     ;;    Files                                                               
     "ff" 'helm-find-files
     "fs" 'save-buffer
@@ -111,6 +112,7 @@
     ;;    Projects                                                            
     "pp" 'helm-projectile-switch-project
     "pf" 'helm-projectile-find-file
+    "pl" 'helm-projectile-rg
     "pb" 'helm-projectile-switch-to-buffer
     "pk" 'projectile-kill-buffers
     "pr" 'helm-projectile-recentf

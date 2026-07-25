@@ -19,6 +19,12 @@
 (when (memq system-type '(windows-nt))
   (add-to-list 'exec-path "C:/Program Files/Git/usr/bin"))
 
+(use-package exec-path-from-shell
+  :if (memq system-type '(darwin))
+  :ensure t
+  :config
+  (exec-path-from-shell-initialize))
+
 ;; not the best name for it, since the packages are downloaded there as well - not just configured
 (add-to-list 'load-path "~/.emacs.d/configs")
 
@@ -29,6 +35,7 @@
 (require 'theme-config)
 (require 'magit-config)
 (require 'helm-config)
+(require 'term-config)
 
 ;; Basic settings
 (setq display-line-numbers-type 'relative)
@@ -66,11 +73,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(helm-minibuffer-history-key "M-p")
- '(package-selected-packages
-   '(apheleia cape cargo cmake-mode company corfu doom-modeline
-              doom-themes eldoc-box evil-collection evil-leader
-              exec-path-from-shell helm helm-projectile lua-mode magit
-              projectile rust-mode treesit-auto vterm)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
