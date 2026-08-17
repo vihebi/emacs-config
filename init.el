@@ -73,7 +73,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(helm-minibuffer-history-key "M-p")
- '(package-selected-packages nil))
+ '(package-selected-packages '(gdscript-mode))
+ '(package-vc-selected-packages
+   '((gdscript-mode :url
+                    "git@github.com:godotengine/emacs-gdscript-mode.git"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

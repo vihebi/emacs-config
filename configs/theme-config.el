@@ -10,7 +10,7 @@
 ;; Font
 (set-face-attribute 'default nil
                     :family my/font-family
-                    :height my/font-size)  ; height in 1/10 pt (120 = 12pt)
+                    :height my/font-size)
 
 ;; A vertical line. For some reason this translates to 120
 (setq-default display-fill-column-indicator-column 107)
@@ -26,8 +26,12 @@
 ;; Theme
 (use-package doom-themes
   :config
-  (load-theme 'doom-ayu-dark t)
+  ;; (setq doom-gruvbox-light-variant "hard")
+  (setq doom-gruvbox-variant "hard")
 
+  ;; (load-theme 'doom-ayu-dark t)
+  ;; (load-theme 'doom-gruvbox-light t)
+  (load-theme 'doom-gruvbox t)
   (doom-themes-org-config))
 
 (use-package doom-modeline

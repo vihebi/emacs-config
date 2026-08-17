@@ -28,16 +28,18 @@
 
 ;;    Eglot   LSP client (same role as nvim-lspconfig)                          
 (use-package eglot
-  :hook ((rust-mode    . eglot-ensure)
-         (c-mode       . eglot-ensure)
-         (c++-mode     . eglot-ensure)
-         (lua-mode     . eglot-ensure))
+  :hook ((rust-mode       . eglot-ensure)
+         (c-mode          . eglot-ensure)
+         (c++-mode        . eglot-ensure)
+         (gdscript-mode   . eglot-ensure)
+         (lua-mode        . eglot-ensure))
   :custom
   (eglot-autoshutdown t)
   ;; Show all diagnostics in the eldoc echo area (like nvim's virtual text)
   (eglot-ignored-server-capabilities '())
   :config
   ;; Server programs   mirrors mason ensure_installed + handlers
+  (setq eglot-inlay-hints-mode nil)
   (add-to-list 'eglot-server-programs '(rust-mode    . ("rust-analyzer")))
   (add-to-list 'eglot-server-programs '((c-mode c++-mode) . ("clangd")))
   (add-to-list 'eglot-server-programs '(lua-mode     . ("lua-language-server")))
@@ -69,7 +71,7 @@
   ;; (apheleia-global-mode +1) ;; This is global format-on-save in layman's terms 
   ;; Rust: rustfmt (rust-mode sets rust-format-on-save; apheleia replaces that)
   (setq rust-format-on-save nil) ; let apheleia handle it
-  (push '(rustfmt . ("rustfmt" "--edition" "2021")) apheleia-formatters)
+  (push '(rustfmt . ("rustfmt")) apheleia-formatters)
   (setf (alist-get 'rust-mode apheleia-mode-alist) 'rustfmt)
   ;; clang-format for C/C++
   (setf (alist-get 'c-mode   apheleia-mode-alist) 'clang-format)
@@ -90,8 +92,15 @@
   :mode "\\.lua\\'")
 (use-package cmake-mode
   :mode ("CMakeLists\\.txt\\'" "\\.cmake\\'"))
+;; (use-package gdscript-mode
+;;   :vc (:url "git@github.com:godotengine/emacs-gdscript-mode.git"))
+(use-package gdscript-mode
+  :mode "\\.gd\\'")
 
 (use-package cargo
   :hook (rust-mode . cargo-minor-mode))
+
+;; (add-to-list 'exec-path "C:/Program Files/Git/usr/bin"))
+(setq gdscript-godot-executable "E:/apps/godot/Godot_v4.6.3-stable_win64.exe")
 
 (provide 'lsp-config)

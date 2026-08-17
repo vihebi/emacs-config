@@ -13,4 +13,18 @@
   :config
   (helm-projectile-on))
 
+(defun vihebi/projectile-last-buffer ()
+  "Jump to the most recently used file buffer of the project being switched to.
+Falls back to `projectile-find-file' for projects not visited this session."
+  (let* ((root (projectile-project-root))
+         (buf  (seq-find (lambda (b)
+                           (and (buffer-file-name b)
+                                (projectile-project-buffer-p b root)))
+                         (buffer-list))))
+    (if buf
+        (switch-to-buffer buf)
+      (projectile-find-file))))
+
+(setq projectile-switch-project-action #'vihebi/projectile-last-buffer)
+
 (provide 'helm-config)
