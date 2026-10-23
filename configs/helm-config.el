@@ -23,7 +23,7 @@ Falls back to `projectile-find-file' for projects not visited this session."
                          (buffer-list))))
     (if buf
         (switch-to-buffer buf)
-      (projectile-find-file))))
+      (helm-projectile-find-file))))
 
 (setq projectile-switch-project-action #'vihebi/projectile-last-buffer)
 

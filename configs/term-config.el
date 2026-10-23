@@ -40,6 +40,13 @@
                (direction . right)
                (window-width . 0.3)))
 
+(defun my/ghostel-disable-line-numbers-and-fill-column ()
+  "Disable line numbers and fill-column indicator in ghostel buffers."
+  (display-line-numbers-mode -1)
+  (display-fill-column-indicator-mode -1))
+
+(add-hook 'ghostel-mode-hook #'my/ghostel-disable-line-numbers-and-fill-column)
+
 ;; (with-eval-after-load 'ghostel
 ;;   (add-to-list 'ghostel-keymap-exceptions "C-g"))
 ;; (global-set-key (kbd "C-t") 'my/ghostel-toggle)

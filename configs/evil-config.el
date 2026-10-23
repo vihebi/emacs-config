@@ -1,6 +1,6 @@
 ;; evil-config.el   mirrors init.lua keybindings + LspAttach block
 
-;; Evil core                                                                  
+;; Evil core
 (use-package evil
   :init
   (setq evil-want-keybinding nil)
@@ -53,7 +53,10 @@
   :config
   (evil-collection-init))
 
-;;  LSP keybindings (mirrors LspAttach block in init.lua)                      
+;; (global-set-key (kbd "C-a") 'evil-numbers/inc-at-pt)
+;; (global-set-key (kbd "C-c x") 'evil-numbers/dec-at-pt)
+
+;;  LSP keybindings (mirrors LspAttach block in init.lua)
 ;;
 ;;  nvim                          emacs
 ;;  gd                xref-find-definitions       (same as cd below, but on gd)
@@ -90,26 +93,26 @@
 
 (add-hook 'eglot-managed-mode-hook #'my/lsp-keybindings)
 
-;;    Leader key                                                                 
+;;    Leader key
 (use-package evil-leader
   :config
   (global-evil-leader-mode)
   (evil-leader/set-leader "<SPC>")
   (evil-leader/set-key
-    ;;    Files                                                               
+    ;;    Files
     "ff" 'helm-find-files
     "fs" 'save-buffer
 
-    ;;    Buffers                                                             
+    ;;    Buffers
     "bb" 'helm-buffers-list   ; fuzzy buffer list, much better than list-buffers
     "bk" 'kill-buffer
     "br" 'helm-recentf        ; recent files
 
-    ;;    Bookmarks                                                           
+    ;;    Bookmarks
     "rl" 'bookmark-bmenu-list
     "rb" 'helm-bookmarks
 
-    ;;    Projects                                                            
+    ;;    Projects
     "pp" 'helm-projectile-switch-project
     "pf" 'helm-projectile-find-file
     "pl" 'helm-projectile-rg
@@ -117,7 +120,7 @@
     "pk" 'projectile-kill-buffers
     "pr" 'helm-projectile-recentf
 
-    ;;    LSP / Code                                                          
+    ;;    LSP / Code
     ;; mirrors: <C-q> code_action (also accessible via leader)
     "ca" 'eglot-code-actions
 
@@ -134,11 +137,11 @@
     ;; mirrors: C-f format (your original binding)
     "cf"  'eglot-format-buffer
 
-    ;;    Hover / Docs                                                        
+    ;;    Hover / Docs
     ;; mirrors: <leader>k vim.lsp.buf.hover { border = "single" }
     "k"   'eldoc-box-help-at-point
 
-    ;;    Diagnostics                                                         
+    ;;    Diagnostics
     ;; mirrors: <leader>vd diagnostic.open_float
     "vd"  'flymake-show-buffer-diagnostics
 

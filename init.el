@@ -51,6 +51,7 @@
 
 ;; Custom global keybinding
 (global-set-key (kbd "C-s") 'save-buffer)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; ido mode
 (require 'ido)
@@ -73,7 +74,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(helm-minibuffer-history-key "M-p")
- '(package-selected-packages '(gdscript-mode))
+ '(package-selected-packages
+   '(annalist apheleia cape cargo cmake-mode company corfu doom-modeline
+              doom-themes eldoc-box evil-collection evil-ghostel
+              evil-leader exec-path-from-shell gdscript-mode
+              helm-projectile lua-mode magit rust-mode treesit-auto
+              vterm))
  '(package-vc-selected-packages
    '((gdscript-mode :url
                     "git@github.com:godotengine/emacs-gdscript-mode.git"))))

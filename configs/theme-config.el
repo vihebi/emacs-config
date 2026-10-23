@@ -14,8 +14,8 @@
 
 ;; A vertical line. For some reason this translates to 120
 (setq-default display-fill-column-indicator-column 107)
-(setq-default display-fill-column-indicator-character ?\ )
-(set-face-attribute 'fill-column-indicator nil :background nil :stipple '(7 1 " "))
+;; (setq-default display-fill-column-indicator-character ?\ )
+;; (set-face-attribute 'fill-column-indicator nil :background nil :stipple '(7 1 " "))
 (global-display-fill-column-indicator-mode 1)
 
 ;; disable 1785 stuff
@@ -26,12 +26,12 @@
 ;; Theme
 (use-package doom-themes
   :config
-  ;; (setq doom-gruvbox-light-variant "hard")
   (setq doom-gruvbox-variant "hard")
-
-  ;; (load-theme 'doom-ayu-dark t)
-  ;; (load-theme 'doom-gruvbox-light t)
   (load-theme 'doom-gruvbox t)
+
+  ;; (setq doom-gruvbox-light-variant "hard")
+  ;; (load-theme 'doom-gruvbox-light t)
+
   (doom-themes-org-config))
 
 (use-package doom-modeline
